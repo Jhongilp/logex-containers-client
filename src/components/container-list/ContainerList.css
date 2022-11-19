@@ -1,0 +1,30 @@
+ul.container-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 150px;
+  height: 80vh;
+  gap: 12px;
+  overflow: scroll;
+}
+
+li.container-list-item {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  min-height: 100px;
+  cursor: pointer;
+}
+
+li.container-list-item:hover {
+  border: 1px solid #5c7db5;
+  box-shadow: 2px 4px 4px 1px #4e6181;
+}
+
+li.container-list-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

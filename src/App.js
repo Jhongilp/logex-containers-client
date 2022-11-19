@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect, useRef } from "react";
+import "./App.css";
+import { ContainerList } from "./components/container-list/ContainerList";
+import { ContainerImage } from "./components/container-image/ContainerImage";
 
 function App() {
+  const [selectedContainerUrl, setSelectedContainerUrl] = useState(null);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Lector de contenedores</h1>
       </header>
+      <main>
+        <ContainerList onSelect={(url) => setSelectedContainerUrl(url)} />
+        <div className="right-col">
+          <ContainerImage imageUrl={selectedContainerUrl} />
+        </div>
+      </main>
     </div>
   );
 }
