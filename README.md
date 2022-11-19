@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+# APLICACIÓN PARA RECONOCIMIENTO DE IMÁGENES DE CONTENEDORES
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Logex
 
-## Available Scripts
+Logex es una empresa exportadora de aguacates, limones, piñas y otras frutas exóticas. Las frutas son despachadas vía marítima en contenedores refrigerados. En promedio, mensualmente se carga en planta 240 contenedores.
+La operación logística de una exportación marítima depende esencialmente de la gestión de los contenedores. Estos son propiedad de las navieras y cada exportador debe reservar cupos en los buques de carga para la asignación de los contenedores. Una vez confirmada reserva, el exportador por medio de su transportador terrestre debe retirar las unidades de carga en los patios de las navieras. 
+Cada contenedor tiene un número único a nivel mundial, este número tiene una relevancia tanto operativa como legal. El número del contenedor debe ir en los documentos de despachos y aduaneros y de su correcta digitación depende la operación logística y aduanera tanto en el país exportador como importador.
+Debido a la importancia de la gestión de los contenedores, Logex está en la búsqueda de un sistema para llevar control de los números de contenedores que ingresan a la planta a realizar los respectivos cargues de exportación. El objetivo principal de este sistema es reducir el riesgo de cometer errores en la documentación derivada principalmente por el número de contenedor y cumplir con estándares de seguridad tales como BASC (Business Alliance for Secure Commerce). 
 
-In the project directory, you can run:
 
-### `npm start`
+## Azure Computer Vision REST API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+CLIENTE: Aplicación en ambiente web desarrollada en JavaScript usando la librería React.js. Esta aplicación consiste en la toma de imágenes por medio de WebRTC, cargue de fotos locales o urls de fotos almacenadas. 
+Azure Computer Vision REST API: La comunicación entre el cliente y la plataforma de Azure Cloud se realizará mediante REST api, la cual consiste en 2 endpoints:
+-	[POST] https://logex-containers.cognitiveservices.azure.com/vision/v3.1/read/analyze?language=en
+La anterior API devuelve una url denominada “operation-location”. La url devuelta se usará para obtener los datos de la imagen:
+-	[GET] https://logex-containers.cognitiveservices.azure.com /vision/v3.1/read/analyzeResults/{operationId} 
